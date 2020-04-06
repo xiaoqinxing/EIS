@@ -96,6 +96,7 @@ class GyroscopeDataFile(object):
     def read_gyro_data(self):
         if not os.path.exists(self.gyrofilename):
             print("start creating "+self.gyrofilename)
+            self.parse()
             with open(self.gyrofilename, "wb") as fp:
                 pickle.dump(self.omega, fp)
                 return self.omega

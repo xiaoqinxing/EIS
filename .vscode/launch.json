@@ -8,7 +8,7 @@
             "name": "EIS",
             "type": "python",
             "request": "launch",
-            "program": "${workspaceFolder}\\EIS.py",
+            "program": "${workspaceFolder}/EIS.py",
             "cwd": "${workspaceFolder}",
             "console": "integratedTerminal"
         }

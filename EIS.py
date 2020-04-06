@@ -18,6 +18,5 @@ shutter_duration = 40 # 40ms
 if __name__ == "__main__":
     print("EIS start")
     gyroscopedata = gyrodata.GyroscopeDataFile(csv)
-    gyroscopedata.parse()
     gyroscopedata.read_gyro_data()
     print("EIS end")
