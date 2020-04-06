@@ -2,6 +2,7 @@ import pickle
 import cv2
 import matplotlib.pyplot as plt
 import gyrodata
+import videodata
 import numpy as np
 import os,math
 
@@ -18,5 +19,7 @@ shutter_duration = 40 # 40ms
 if __name__ == "__main__":
     print("EIS start")
     gyroscopedata = gyrodata.GyroscopeDataFile(csv)
-    gyroscopedata.read_gyro_data()
+    gyroscopedata.read_data()
+    videodata = videodata.VideoDataFile(video)
+    videodata = videodata.read_data()
     print("EIS end")

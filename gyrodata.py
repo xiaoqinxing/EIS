@@ -93,7 +93,7 @@ class GyroscopeDataFile(object):
         )
         return (est_x, est_y, est_z)
     
-    def read_gyro_data(self):
+    def read_data(self):
         if not os.path.exists(self.gyrofilename):
             print("start creating "+self.gyrofilename)
             self.parse()
