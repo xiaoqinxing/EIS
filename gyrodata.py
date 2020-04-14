@@ -98,8 +98,8 @@ class GyroscopeDataFile(object):
             print("start creating "+self.gyrofilename)
             self.parse()
             with open(self.gyrofilename, "wb") as fp:
-                pickle.dump(self.omega, fp)
-                return self.omega
+                pickle.dump(self, fp)
+                return self
         else:
             with open(self.gyrofilename, "rb") as fp:
                 return pickle.load(fp)

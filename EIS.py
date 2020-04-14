@@ -4,7 +4,8 @@ import matplotlib.pyplot as plt
 import gyrodata
 import videodata
 import numpy as np
-import os,math
+import os, math
+import calibration
 
 filepath = "C:/Users/qinxing/Desktop/tmp/Recorder/"
 csvfilename = "VID_20200406_190021gyro.csv"
@@ -18,8 +19,10 @@ shutter_duration = 40 # 40ms
 
 if __name__ == "__main__":
     print("EIS start")
-    gyroscopedata = gyrodata.GyroscopeDataFile(csv)
-    gyroscopedata.read_data()
-    videodata = videodata.VideoDataFile(video)
-    videodata = videodata.read_data()
+    # gyroscopedata = gyrodata.GyroscopeDataFile(csv)
+    # gyroscopedata.read_data()
+    # videodata = videodata.VideoDataFile(video)
+    # videodata = videodata.read_data()
+    cal = calibration.CalibrateGyroStabilize(video, csv)
+    cal.calibrate()
     print("EIS end")
