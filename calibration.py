@@ -323,3 +323,40 @@ class CalibrateGyroStabilize(object):
         )
         # return ( (smooth_delta_x, smooth_delta_y, smooth_delta_z), timestamps, 
         # focal_length, gyro_delay, gyro_drift, shutter_duration)
+
+class LenParametersFromMatlab(object):
+    """
+    get opencv camera parameters from matlab parameters
+    """
+    def __init__(self,
+        radialDistortion,
+        tangentialDistortion,
+        intrinsicMatrix,
+        focalLength,
+        principalPoint
+    ):
+        """
+        radialDistortion:     1 x 2 matrix
+        tangentialDistortion: 1 x 2 matrix
+        intrinsicMatrix:      3 x 3 matrix
+        """
+        self.kc1 = radialDistortion[0]
+        self.kc2 = radialDistortion[1]
+        self.kc3 = tangentialDistortion[0]
+        self.kc4 = tangentialDistortion[1]
+        self.fc1 = intrinsicMatrix[0][0]
+        self.fc2 = intrinsicMatrix[1][1]
+        self.cc1 = intrinsicMatrix[2][0]
+        self.cc2 = intrinsicMatrix[2][1]
+        self.focalLength = focalLength
+        self.principalPoint = principalPoint
+
+    def getCameraMatrix(self):
+        return np.array([
+            [self.fc1, 0, self.cc1],
+            [0, self.fc2, self.cc2],
+            [0,         0,       1]
+        ])
+
+    def getdistCoeffs(self):
+        return np.array([self.kc1, self.kc2, self.kc3, self.kc4])
